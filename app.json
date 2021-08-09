@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Tcc-Murilo",
+    "slug": "Tcc-Murilo",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Tcc-Murilo"
+}
