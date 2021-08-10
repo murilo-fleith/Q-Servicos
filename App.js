@@ -3,17 +3,18 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import LoginScreen from './LoginScreen';
-import CadastroScreen from'./CadastroScreen';
-import CadastroUsuario from'./CadastroUsuario';
-import CadastroPrestador from'./CadastroPrestador'
-
+//import LoginScreen from './LoginScreen';
+//import CadastroScreen from'./CadastroScreen';
+//import CadastroUsuario from'./CadastroUsuario';
+//import CadastroPrestador from'./CadastroPrestador'
+import Login from "./Login/Login"
+import NewUser from './NewUser/NewUser'
 
 const AppNavigator = createSwitchNavigator({
-  Home: LoginScreen,
-  Cadastro: CadastroScreen,
-  Usuario: CadastroUsuario,
-  Prestador: CadastroPrestador,
+  Home: Login,
+  Cadastro: NewUser,
+  //Usuario: CadastroUsuario,
+  //Prestador: CadastroPrestador,
   },
 {
   initialRouteName: 'Home',
