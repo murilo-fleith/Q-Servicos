@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
-import firebase from '../firebase-config'
+import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 
@@ -8,12 +8,21 @@ import { MaterialCommunityIcons } from "@expo/vector-icons"
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
+    const [password, setPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState("");
 
 
     const loginFirebase = () => {
-
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Signed in
+                var user = userCredential.user;
+                // ...
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
     }
     useEffect(() => {
 
@@ -29,14 +38,14 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setEmail(text)}
                 value={email}
             />
-
+            
             <TextInput
                 style={styles.input}
                 secureTextEntry={true} //carecterer de senha 
                 placeholder="Digite sua senha"
                 type="text"
-                onChangeText={(text) => setSenha(text)}
-                value={senha}
+                onChangeText={(text) => setPassword(text)}
+                value={password}
             />
             {errorLogin === true
                 ?
@@ -51,7 +60,7 @@ export default function Login({ navigation }) {
                 :
                 <View />
             }
-            {email === "" || senha === ""
+            {email === "" || password === ""
                 ?
                 <TouchableOpacity
                     disabled={true}
@@ -61,21 +70,22 @@ export default function Login({ navigation }) {
                 :
                 //onpresss funcao abaixo  
                 <TouchableOpacity
-                    style={styles.buttonLogin}>
+                    style={styles.buttonLogin}
+                    onPress={() => { loginFirebase() }}>
                     <Text style={styles.textButtonLogin}>Login</Text>
                 </TouchableOpacity>
 
             }
 
-            <Text style={styles.registration}>Se você ainda nao é cadastrado! 
+            <Text style={styles.registration}>Se você ainda nao é cadastrado!
                 <Text
                     style={styles.linkSubscribe}
-                    onPress={() => navigation.navigate("NewUser")}
+                    onPress={() => navigation.navigate("Cadastro")}
                 >
-                   Cadastre-se agora! 
+                    Cadastre-se agora!
                 </Text>
             </Text>
-            <View style={{height:100}}/>
+            <View style={{ height: 100 }} />
         </KeyboardAvoidingView>
     )
 }
