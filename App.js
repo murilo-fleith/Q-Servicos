@@ -17,7 +17,7 @@ const AppNavigator = createSwitchNavigator({
   //Prestador: CadastroPrestador,
   },
 {
-  initialRouteName: 'Home',
+  initialRouteName: 'Cadastro',
 }
 )
 
