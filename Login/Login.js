@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
-import firebase from '../Firebase'
+import firebase from '../firebase-config'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 
