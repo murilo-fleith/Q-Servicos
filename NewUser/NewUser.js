@@ -39,7 +39,7 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setEmail(text)}
                 value={email}
             />
-            
+
             <TextInput
                 style={styles.input}
                 secureTextEntry={true} //carecterer de senha 
@@ -48,34 +48,30 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setPassword(text)}
                 value={password}
             />
-            {errorLogin === true
-                ?
-                <View style={style.contentAlert}>
-                    <MaterialCommunityIcons
-                        name="alert-circle"
-                        size={24}
-                        color="#bdbdbd"
-                    />
-                    <Text style={styles.waringAlert}> Senha ou Email Invalidos</Text>
-                </View>
-                :
-                <View />
-            }
             {email === "" || password === ""
                 ?
                 <TouchableOpacity
                     disabled={true}
-                    style={styles.buttonLogin}>
+                    style={styles.buttonRegister}>
                     <Text style={styles.textButtonLogin}>Cadastar</Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity
-                    style={styles.buttonLogin}
-                    onPress={()=> {register()}}>
+                    style={styles.buttonRegister}
+                    onPress={() => { register() }}>
                     <Text style={styles.textButtonLogin}>Cadastrar</Text>
                 </TouchableOpacity>
-
             }
+
+            <Text style={styles.login}>Voce ja é cadastrado ? 
+                <Text
+                    style={styles.linkLogin}
+                    onPress={() => navigation.navigate("Home")}
+                >
+                    Entre Agora!
+                </Text>
+            </Text>
+            <View style={{ height: 100 }} />
 
         </KeyboardAvoidingView>
     )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, Alert } from 'react-native'
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
@@ -18,15 +18,27 @@ export default function Login({ navigation }) {
                 // Signed in
                 var user = userCredential.user;
                 // ...
+                alert("bem vindo ")
+
             })
             .catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
+                alert(errorCode, errorMessage)
             });
     }
     useEffect(() => {
-
+        firebase.auth().onAuthStateChanged(function(user){
+            if (user) {
+                //var uid = user.uid;
+                console.log(user.uid)
+            } else {
+                console.log("nao logado")
+            }
+        });
     }, [])
+
+
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
@@ -38,7 +50,7 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setEmail(text)}
                 value={email}
             />
-            
+
             <TextInput
                 style={styles.input}
                 secureTextEntry={true} //carecterer de senha 
@@ -53,7 +65,7 @@ export default function Login({ navigation }) {
                     <MaterialCommunityIcons
                         name="alert-circle"
                         size={24}
-                        color="#bdbdbd"
+                        color="#FF0000"
                     />
                     <Text style={styles.waringAlert}> Senha ou Email Invalidos</Text>
                 </View>
@@ -73,6 +85,7 @@ export default function Login({ navigation }) {
                     style={styles.buttonLogin}
                     onPress={() => { loginFirebase() }}>
                     <Text style={styles.textButtonLogin}>Login</Text>
+
                 </TouchableOpacity>
 
             }

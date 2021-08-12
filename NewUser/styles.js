@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         marginRight: "auto",
         color:"#4d5156"
     },
-    buttonLogin:{
+    buttonRegister:{
         width:200,
         height: 50,
         justifyContent: "center",
@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
        color: '#bdbdbd',
        fontSize: 16 
     },
-    registration:{
+    login:{
         marginTop: 20,
         color:"#4d5156",
     },
-    linkSubscribe:{
+    linkLogin:{
         color:"#0000FF",
         fontSize:16
     

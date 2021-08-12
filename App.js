@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 //import LoginScreen from './LoginScreen';
-//import CadastroScreen from'./CadastroScreen';
+import CadastroScreen from'./CadastroScreen';
 //import CadastroUsuario from'./CadastroUsuario';
 //import CadastroPrestador from'./CadastroPrestador'
 import Login from "./Login/Login"
@@ -13,7 +13,7 @@ import NewUser from './NewUser/NewUser'
 const AppNavigator = createSwitchNavigator({
   Home: Login,
   Cadastro: NewUser,
-  //Usuario: CadastroUsuario,
+  Teste: CadastroScreen,
   //Prestador: CadastroPrestador,
   },
 {
