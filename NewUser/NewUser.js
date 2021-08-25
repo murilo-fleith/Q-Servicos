@@ -3,14 +3,16 @@ import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
-
+//import databse from "../Firebase"
 
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState("");
-
+    const [name, setName] = useState("");
+    const [telefone, setTelefone] = useState("");
+    var databse = firebase.firestore();
 
     const register = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -24,7 +26,13 @@ export default function Login({ navigation }) {
                 var errorMessage = error.message;
                 // ..
             });
+        databse.collection("usuario",'{idUser:userCredential.uid}').add({  //funcao que salva no banco 
+            name: name,
+            telefone: telefone,
+            email: email
+        })
     }
+
     useEffect(() => {
 
     }, [])
@@ -32,6 +40,20 @@ export default function Login({ navigation }) {
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
             <Text style={styles.title}> Cadastro  </Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Digite seu Nome"
+                type="text"
+                onChangeText={(text) => setName(text)}
+                value={name}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Digite seu Telefone"
+                type="text"
+                onChangeText={(text) => setTelefone(text)}
+                value={telefone}
+            />
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu email"
@@ -63,7 +85,7 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
             }
 
-            <Text style={styles.login}>Voce ja é cadastrado ? 
+            <Text style={styles.login}>Voce ja é cadastrado ?
                 <Text
                     style={styles.linkLogin}
                     onPress={() => navigation.navigate("Home")}
