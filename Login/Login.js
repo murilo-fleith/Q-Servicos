@@ -18,13 +18,14 @@ export default function Login({ navigation }) {
                 // Signed in
                 var user = userCredential.user;
                 // ...
-                alert("bem vindo ")
+                //alert("bem vindo ")
 
             })
             .catch((error) => {
+                setErrorLogin(true)
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                alert(errorCode, errorMessage)
+                
             });
     }
     useEffect(() => {
@@ -32,6 +33,8 @@ export default function Login({ navigation }) {
             if (user) {
                 //var uid = user.uid;
                 console.log(user.uid)
+                navigation.navigate("menu")
+
             } else {
                 console.log("nao logado")
             }
@@ -61,7 +64,7 @@ export default function Login({ navigation }) {
             />
             {errorLogin === true
                 ?
-                <View style={style.contentAlert}>
+                <View style={styles.contentAlert}>
                     <MaterialCommunityIcons
                         name="alert-circle"
                         size={24}

@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     waringAlert:{
        paddingLeft: 10,
-       color: '#bdbdbd',
+       color: '#fa2f2f',
        fontSize: 16 
     },
     registration:{
