@@ -18,12 +18,20 @@ export default function HomeUsuario({ navigation }) {
     /////////////////////////////////////////////////////////
     const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
+    const signOut = () => {
+        firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            navigation.navigate("Home")
+        }).catch((error) => {
+            // An error happened.
+        });
+    }
     return (
         <SafeAreaView style={styles.container} >
             <View style={styles.header}>
                 <TouchableOpacity
                     //onPress={() => navigation.navigate("teste")}
-                    onPress={alert}>
+                    onPress={signOut}>
                     <MaterialCommunityIcons
                         name="account"
                         size={20}
