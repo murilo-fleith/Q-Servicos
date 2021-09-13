@@ -1,63 +1,96 @@
-import {Platform, StyleSheet} from "react-native"
+import { Platform, StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
+    container: {
+        flex: 1,
         backgroundColor: "#fff",
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: Platform.OS === "ios"?0:50,
+        paddingTop: Platform.OS === "ios" ? 0 : 50,
     },
-    title:{
-        fontSize:48,
-        color:"#F24F00",
+    title: {
+        fontSize: 48,
+        color: "#F24F00",
         marginBottom: 10,
         fontWeight: 'bold' //negrito
     },
-    input:{
+    input: {
         width: 300,
         marginTop: 10,
         padding: 10,
-        height:50,
-        borderBottomWidth:1,
+        height: 50,
+        borderBottomWidth: 1,
         borderBottomColor: '#F24F00',
-        marginLeft:"auto",
+        marginLeft: "auto",
         marginRight: "auto",
-        color:"#4d5156"
+        color: "#4d5156"
     },
-    buttonRegister:{
-        width:200,
+    buttonRegister: {
+        width: 200,
         height: 50,
         justifyContent: "center",
-        alignItems:"center",
-        backgroundColor:"#F24F00",
+        alignItems: "center",
+        backgroundColor: "#F24F00",
         borderRadius: 50,
-        marginTop:30
+        marginTop: 30
 
     },
-    textButtonLogin:{
-        color:"#ffffff",
+    textButtonLogin: {
+        color: "#ffffff",
     },
-    contentAlert:{
+    contentAlert: {
         marginTop: 20,
         flexDirection: "row",
-        justifyContent:'center',
+        justifyContent: 'center',
         alignItems: "center"
     },
-    waringAlert:{
-       paddingLeft: 10,
-       color: '#bdbdbd',
-       fontSize: 16 
+    waringAlert: {
+        paddingLeft: 10,
+        color: '#bdbdbd',
+        fontSize: 16
     },
-    login:{
+    login: {
         marginTop: 20,
-        color:"#4d5156",
+        color: "#4d5156",
     },
-    linkLogin:{
-        color:"#0000FF",
-        fontSize:16
+    linkLogin: {
+        color: "#0000FF",
+        fontSize: 16
+
+    },
+    checkbox: {
+        alignSelf: "center",
+    },
+    funcao: {
+        height: 50,
+
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        paddingLeft: 30,
+        paddingRight: 30,
+        borderColor: "red"
+    },
+    btnop: {
+        width: 200,
+        height: 50,
+        alignItems: 'center',
+        alignContent: 'center',
+
+    },
+    checkboxContainer: {
+        marginBottom: 20,
+        height: 25,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        paddingLeft: 10,
+        paddingRight: 10,
+
+    },
     
-    }
 
 })
 

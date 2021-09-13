@@ -19,10 +19,11 @@ export default function HomeUsuario({ navigation }) {
     const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container} >
             <View style={styles.header}>
-                <TouchableOpacity>
-                    //onPress={() => navigation.navigate("teste")}  
+                <TouchableOpacity
+                    //onPress={() => navigation.navigate("teste")}
+                    onPress={alert}>
                     <MaterialCommunityIcons
                         name="account"
                         size={20}
@@ -46,34 +47,36 @@ export default function HomeUsuario({ navigation }) {
             </View>
             <ScrollView>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 1  </Text>
+                    <Text>Aqui ira os prestadores 1  </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 2 </Text>
+                    <Text>Nome: </Text>
+                    <Text>Função:</Text>
+                    <Text>Avalhação</Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 3 </Text>
+                    <Text>Aqui ira os prestadores 3 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 4 </Text>
+                    <Text>Aqui ira os prestadores 4 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 5 </Text>
+                    <Text>Aqui ira os prestadores 5 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 6 </Text>
+                    <Text>Aqui  ira os prestadores 6 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 7 </Text>
+                    <Text>Aqui  ira os prestadores 7 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 8 </Text>
+                    <Text>Aqui  ira os prestadores 8 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 9 </Text>
+                    <Text>Aqui  ira os prestadores 9 </Text>
                 </View>
                 <View style={styles.box}>
-                    <Text>Aqui vai os prestadores 10 </Text>
+                    <Text>Aqui  ira os prestadores 10 </Text>
                 </View>
 
             </ScrollView>

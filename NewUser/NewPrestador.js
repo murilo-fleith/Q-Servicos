@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, CheckBox, KeyboardAvoidingView, Platform } from 'react-native'
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
@@ -12,6 +12,10 @@ export default function Login({ navigation }) {
     const [errorLogin, setErrorLogin] = useState("");
     const [name, setName] = useState("");
     const [telefone, setTelefone] = useState("");
+    const [encanador, setEncanador] = useState(false);
+    const [eletrecista, setEletricista] = useState(false);
+    const [pedreiro, setPedreiro] = useState(false);
+    const [manutencaoGeral,setManutencaoGeral]= useState(false);
     var databse = firebase.firestore();
 
     const register = () => {
@@ -26,10 +30,14 @@ export default function Login({ navigation }) {
                 var errorMessage = error.message;
                 // ..
             });
-        databse.collection("usuario").add({  //funcao que salva no banco 
+        databse.collection("prestador").add({  //funcao que salva no banco 
             name: name,
             telefone: telefone,
-            email: email
+            email: email,
+            encanador: encanador,
+            eletrecista: eletrecista,
+            pedreiro: pedreiro,
+            manutencaoGeral: manutencaoGeral
         })
     }
 
@@ -70,19 +78,50 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setPassword(text)}
                 value={password}
             />
-            {email === "" || password === ""
-                ?
-                <TouchableOpacity
-                    disabled={true}
-                    style={styles.buttonRegister}>
-                    <Text style={styles.textButtonLogin}>Cadastar</Text>
-                </TouchableOpacity>
-                :
-                <TouchableOpacity
-                    style={styles.buttonRegister}
-                    onPress={() => { register() }}>
-                    <Text style={styles.textButtonLogin}>Cadastrar</Text>
-                </TouchableOpacity>
+            <Text> Selecione Suas Habilidades </Text>
+            <View style={styles.checkboxContainer}>
+                <CheckBox
+                    value={encanador}
+                    onValueChange={setEncanador}
+                    style={styles.checkbox}
+                />
+                <Text style={styles.label}>Encanador        </Text>
+
+                <CheckBox
+                    value={eletrecista}
+                    onValueChange={setEletricista}
+                    style={styles.checkbox}
+                />
+                <Text style={styles.label}>Eletricista</Text>
+            </View>
+            <View style={styles.checkboxContainer}>
+                <CheckBox
+                    value={pedreiro}
+                    onValueChange={setPedreiro}
+                    style={styles.checkbox}
+                />
+                <Text style={styles.label}>Pedreiro     </Text>
+                <CheckBox
+                    value={manutencaoGeral}
+                    onValueChange={setManutencaoGeral}
+                    style={styles.checkbox}
+                />
+                <Text style={styles.label}>Manutenção Geral</Text>
+            </View>
+            {
+                email === "" || password === ""
+                    ?
+                    <TouchableOpacity
+                        disabled={true}
+                        style={styles.buttonRegister}>
+                        <Text style={styles.textButtonLogin}>Cadastar</Text>
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity
+                        style={styles.buttonRegister}
+                        onPress={() => { register() }}>
+                        <Text style={styles.textButtonLogin}>Cadastrar</Text>
+                    </TouchableOpacity>
             }
 
             <Text style={styles.login}>Voce ja é cadastrado ?
@@ -95,7 +134,7 @@ export default function Login({ navigation }) {
             </Text>
             <View style={{ height: 100 }} />
 
-        </KeyboardAvoidingView>
+        </KeyboardAvoidingView >
     )
 }
 //onPress={() => this.props.navigation.navigate('CadastroPrestador')

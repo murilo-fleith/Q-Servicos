@@ -15,25 +15,21 @@ export default function Login({ navigation }) {
     const loginFirebase = () => {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                // Signed in
-                var user = userCredential.user;
-                // ...
-                //alert("bem vindo ")
 
+                var user = userCredential.user;
             })
             .catch((error) => {
                 setErrorLogin(true)
                 var errorCode = error.code;
                 var errorMessage = error.message;
-                
+
             });
     }
     useEffect(() => {
-        firebase.auth().onAuthStateChanged(function(user){
+        firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
                 //var uid = user.uid;
-                console.log(user.uid)
-                navigation.navigate("menu")
+                navigation.navigate("Usuario")
 
             } else {
                 console.log("nao logado")
@@ -80,14 +76,14 @@ export default function Login({ navigation }) {
                 <TouchableOpacity
                     disabled={true}
                     style={styles.buttonLogin}>
-                    <Text style={styles.textButtonLogin}>Login</Text>
+                    <Text style={styles.textButtonLogin}>ENTRAR</Text>
                 </TouchableOpacity>
                 :
                 //onpresss funcao abaixo  
                 <TouchableOpacity
                     style={styles.buttonLogin}
                     onPress={() => { loginFirebase() }}>
-                    <Text style={styles.textButtonLogin}>Login</Text>
+                    <Text style={styles.textButtonLogin}>ENTRAR</Text>
 
                 </TouchableOpacity>
 
@@ -96,7 +92,7 @@ export default function Login({ navigation }) {
             <Text style={styles.registration}>Se você ainda nao é cadastrado!
                 <Text
                     style={styles.linkSubscribe}
-                    onPress={() => navigation.navigate("Cadastro")}
+                    onPress={() => navigation.navigate("Funcao")}
                 >
                     Cadastre-se agora!
                 </Text>
