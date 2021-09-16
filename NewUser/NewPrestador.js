@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, CheckBox, KeyboardAvoidingView
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
-//import databse from "../Firebase"
+
 
 
 export default function Login({ navigation }) {
@@ -12,10 +12,15 @@ export default function Login({ navigation }) {
     const [errorLogin, setErrorLogin] = useState("");
     const [name, setName] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [encanador, setEncanador] = useState(false);
-    const [eletrecista, setEletricista] = useState(false);
-    const [pedreiro, setPedreiro] = useState(false);
-    const [manutencaoGeral,setManutencaoGeral]= useState(false);
+
+    const [encanador, setEncanador] = useState('Encanador');
+    const [eletrecista, setEletricista] = useState('Eletrecista');
+    const [pedreiro, setPedreiro] = useState('Pedreiro');
+    const [manutencaoGeral, setManutencaoGeral] = useState('Manutenção Geral');
+    const [city, setCity] = useState("");
+    const [dia, setDia] = useState('Dia');
+    const [ponto, setPonto] = useState('Ponto')
+    const [preco, setPreco] = useState("");
     var databse = firebase.firestore();
 
     const register = () => {
@@ -37,7 +42,10 @@ export default function Login({ navigation }) {
             encanador: encanador,
             eletrecista: eletrecista,
             pedreiro: pedreiro,
-            manutencaoGeral: manutencaoGeral
+            manutencaoGeral: manutencaoGeral,
+            dia: dia,
+            ponto: ponto,
+            preco: preco,
         })
     }
 
@@ -78,6 +86,38 @@ export default function Login({ navigation }) {
                 onChangeText={(text) => setPassword(text)}
                 value={password}
             />
+
+            <TextInput
+                style={styles.input}
+                placeholder="Digite a Cidade"
+                type="text"
+                onChangeText={(text) => setCity(text)}
+                value={city}
+            />
+            <TextInput
+                style={styles.inputPreco}
+                placeholder="Digite o preço"
+                type="text"
+                onChangeText={(text) => setPreco(text)}
+                value={preco}
+            />
+            <View style={styles.teste}>
+                <CheckBox
+                    value={dia}
+                    onValueChange={setDia}
+                    style={styles.checkbox}
+                />
+                <Text>R$/Dia</Text>
+
+                <CheckBox
+                    value={ponto}
+                    onValueChange={setPonto}
+                    style={styles.checkbox}
+                />
+                <Text>R$/Ponto</Text>
+            </View>
+
+            <View></View>
             <Text> Selecione Suas Habilidades </Text>
             <View style={styles.checkboxContainer}>
                 <CheckBox

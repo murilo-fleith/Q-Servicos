@@ -1,5 +1,9 @@
 import {Platform, StyleSheet} from "react-native"
-//home usuario
+
+
+
+
+
 
 //"#F24F00"
 const styles = StyleSheet.create({

@@ -25,6 +25,18 @@ const styles = StyleSheet.create({
         marginRight: "auto",
         color: "#4d5156"
     },
+    inputPreco: {
+        width: 300,
+        marginTop: 10,
+        padding: 10,
+        height: 50,
+        borderBottomWidth: 1,
+        borderBottomColor: '#F24F00',
+        marginLeft: "auto",
+        marginRight: "auto",
+        color: "#4d5156",
+        flexDirection: 'row'
+    },
     buttonRegister: {
         width: 200,
         height: 50,
@@ -90,6 +102,12 @@ const styles = StyleSheet.create({
         paddingRight: 10,
 
     },
+    teste:{
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        alignContent: 'center',
+    }
     
 
 })

@@ -22,7 +22,7 @@ export default function HomeUsuario({ navigation }) {
 
     //databse.collection("prestador").onSnapshot((query))
     useEffect(() => {
-        database.collection("prestador").onSnapshot((query) => {
+        database.collection("usuario").onSnapshot((query) => {
             const list = [];
             query.forEach((doc) => {
                 list.push({ ...doc.data(), id: doc.id });
@@ -57,8 +57,8 @@ export default function HomeUsuario({ navigation }) {
                     />
                 </TouchableOpacity>
 
-                <Text>Bem Vindo! Nome Do Usuario !</Text>
-                <Text>Oque Esta Precisando Hoje ??</Text>
+                <Text>Bem Vindo NOME DO PRESTADOR !! </Text>
+
                 <TouchableOpacity
                     onPress={() => navigation.navigate("NewPrestador")}>
                     <MaterialCommunityIcons
@@ -71,7 +71,7 @@ export default function HomeUsuario({ navigation }) {
             </View>
             <ScrollView>
                 <View style={styles.box}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Prestador')}>Ver tela visa pelos Prestadores </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Usuario')}> VER tela visa pelos Usuarios</TouchableOpacity>
                 </View>
 
                 <FlatList
@@ -87,12 +87,9 @@ export default function HomeUsuario({ navigation }) {
                             </View>
                             <View style={styles.box2}>
                                 <Text>Cidade:{item.city}</Text>
-                                <Text>Valor R$:{item.preco}/{item.dia}{item.ponto}</Text>
-                                <Text>Capacidades:{item.eletrecista} {item.pedreiro} {item.encanador} {item.manutencaoGeral}</Text>
-                            </View>
-                            <View style={styles.box3}>
                                 <TouchableOpacity onPress={() => navigation.navigate('Chat')}> CHAT</TouchableOpacity>
                             </View>
+
                         </View>
 
 
