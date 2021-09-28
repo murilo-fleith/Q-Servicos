@@ -15,7 +15,26 @@ export default function HomeUsuario({ navigation }) {
     const [telefone, setTelefone] = useState("");
     const [listFire, setListFire] = useState('');
 
+    const user = firebase.auth().currentUser;
+    if (user) {
+        // The user object has basic properties such as display name, email, etc.
+        const displayName = user.displayName;
+        const email = user.email;
+        const photoURL = user.photoURL;
+        const emailVerified = user.emailVerified;
+        const uid = user.uid;
 
+    }
+    user.updateProfile({
+        displayName: name,
+
+    }).then(() => {
+        // Update successful
+        // ...
+    }).catch((error) => {
+        // An error occurred
+        // ...
+    });
 
     var database = firebase.firestore();
 
@@ -57,7 +76,7 @@ export default function HomeUsuario({ navigation }) {
                     />
                 </TouchableOpacity>
 
-                <Text>Bem Vindo NOME DO PRESTADOR !! </Text>
+                <Text>Bem Vindo {user.displayName} </Text>
 
                 <TouchableOpacity
                     onPress={() => navigation.navigate("NewPrestador")}>
@@ -71,7 +90,7 @@ export default function HomeUsuario({ navigation }) {
             </View>
             <ScrollView>
                 <View style={styles.box}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Usuario')}> VER tela visa pelos Usuarios</TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Usuario')}> ??{user.displayName}</TouchableOpacity>
                 </View>
 
                 <FlatList

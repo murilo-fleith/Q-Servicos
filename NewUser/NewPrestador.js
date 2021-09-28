@@ -12,29 +12,31 @@ export default function Login({ navigation }) {
     const [errorLogin, setErrorLogin] = useState("");
     const [name, setName] = useState("");
     const [telefone, setTelefone] = useState("");
+    const [city, setCity] = useState("");
 
     const [encanador, setEncanador] = useState('Encanador');
     const [eletrecista, setEletricista] = useState('Eletrecista');
     const [pedreiro, setPedreiro] = useState('Pedreiro');
     const [manutencaoGeral, setManutencaoGeral] = useState('Manutenção Geral');
-    const [city, setCity] = useState("");
     const [dia, setDia] = useState('Dia');
     const [ponto, setPonto] = useState('Ponto')
     const [preco, setPreco] = useState("");
     var databse = firebase.firestore();
 
     const register = () => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // Signed in
-                var user = userCredential.user;
-                // ...
-            })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ..
-            });
+        firebase.auth().createUserWithEmailAndPassword(email,password)
+        .then((userCredentials)=>{
+            if(userCredentials.user){
+              userCredentials.user.updateProfile({
+                displayName: name
+              }).then((s)=> {
+                navigation.navigate('Prestador');
+              })
+            }
+        })
+        .catch(function(error) {
+          alert(error.message);
+        });
         databse.collection("prestador").add({  //funcao que salva no banco 
             name: name,
             telefone: telefone,

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, Animated, StatusBar, FlatList } from 'react-native'
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import { SearchBar } from "react-native-screens"
-//import databse from "../Firebase"
+
 
 
 export default function HomeUsuario({ navigation }) {
+    var database = firebase.firestore();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState("");
@@ -15,12 +16,17 @@ export default function HomeUsuario({ navigation }) {
     const [telefone, setTelefone] = useState("");
     const [listFire, setListFire] = useState('');
 
+    const user = firebase.auth().currentUser;
+    if (user) {
+        const displayName = user.displayName;
+        const email = user.email;
+        const photoURL = user.photoURL;
+        const emailVerified = user.emailVerified;
+        const uid = user.uid;
+
+    }
 
 
-    var database = firebase.firestore();
-
-
-    //databse.collection("prestador").onSnapshot((query))
     useEffect(() => {
         database.collection("prestador").onSnapshot((query) => {
             const list = [];
@@ -56,9 +62,8 @@ export default function HomeUsuario({ navigation }) {
                         color="#00000"
                     />
                 </TouchableOpacity>
-
-                <Text>Bem Vindo! Nome Do Usuario !</Text>
-                <Text>Oque Esta Precisando Hoje ??</Text>
+                <Text>Bem Vindo! {user.displayName} !</Text>
+                <Text>Oque Esta Precisando Hoje ?</Text>
                 <TouchableOpacity
                     onPress={() => navigation.navigate("NewPrestador")}>
                     <MaterialCommunityIcons
@@ -70,7 +75,10 @@ export default function HomeUsuario({ navigation }) {
                 </TouchableOpacity>
             </View>
             <ScrollView>
+
                 <View style={styles.box}>
+                    <Text> ! {user.uid}</Text>
+                    <Text> ! {user.email} </Text>
                     <TouchableOpacity onPress={() => navigation.navigate('Prestador')}>Ver tela visa pelos Prestadores </TouchableOpacity>
                 </View>
 
@@ -81,26 +89,21 @@ export default function HomeUsuario({ navigation }) {
 
                         <View style={styles.box}>
                             <View style={styles.box2}>
-                                <Text >Nome: {item.name} </Text>
-                                <Text> Telefone: {item.telefone} </Text>
-                                <Text > email: {item.email} </Text>
+                                <Text>Nome: {item.name} </Text>
+                                <Text>Telefone: {item.telefone} </Text>
+                                <Text>Capacidades:{item.eletrecista} {item.pedreiro} {item.encanador} {item.manutencaoGeral}</Text>
                             </View>
                             <View style={styles.box2}>
                                 <Text>Cidade:{item.city}</Text>
                                 <Text>Valor R$:{item.preco}/{item.dia}{item.ponto}</Text>
-                                <Text>Capacidades:{item.eletrecista} {item.pedreiro} {item.encanador} {item.manutencaoGeral}</Text>
+
                             </View>
                             <View style={styles.box3}>
                                 <TouchableOpacity onPress={() => navigation.navigate('Chat')}> CHAT</TouchableOpacity>
                             </View>
                         </View>
-
-
-                        //flexDirection: 'row',
-
                     }
                 />
-
 
             </ScrollView>
         </SafeAreaView >

@@ -12,26 +12,33 @@ export default function Login({ navigation }) {
     const [errorLogin, setErrorLogin] = useState("");
     const [name, setName] = useState("");
     const [telefone, setTelefone] = useState("");
+    const [city, setCity] = useState("");
     var databse = firebase.firestore();
 
     const register = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // Signed in
-                var user = userCredential.user;
-                // ...
+            .then((userCredentials) => {
+                if (userCredentials.user) {
+                    userCredentials.user.updateProfile({
+                        displayName: name
+                    }).then((s) => {
+                        navigation.navigate('Usuario');
+                    })
+                }
             })
-            .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // ..
+            .catch(function (error) {
+                alert(error.message);
             });
         databse.collection("usuario").add({  //funcao que salva no banco 
             name: name,
             telefone: telefone,
             email: email
+
         })
     }
+
+
+
 
     useEffect(() => {
 
@@ -60,6 +67,14 @@ export default function Login({ navigation }) {
                 type="text"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
+            />
+
+            <TextInput
+                style={styles.input}
+                placeholder="Digite Sua Cidade"
+                type="text"
+                onChangeText={(text) => setCity(text)}
+                value={city}
             />
 
             <TextInput
