@@ -17,7 +17,6 @@ export default function HomeUsuario({ navigation }) {
 
     const user = firebase.auth().currentUser;
     if (user) {
-        // The user object has basic properties such as display name, email, etc.
         const displayName = user.displayName;
         const email = user.email;
         const photoURL = user.photoURL;
@@ -25,16 +24,7 @@ export default function HomeUsuario({ navigation }) {
         const uid = user.uid;
 
     }
-    user.updateProfile({
-        displayName: name,
-
-    }).then(() => {
-        // Update successful
-        // ...
-    }).catch((error) => {
-        // An error occurred
-        // ...
-    });
+    
 
     var database = firebase.firestore();
 
@@ -76,7 +66,7 @@ export default function HomeUsuario({ navigation }) {
                     />
                 </TouchableOpacity>
 
-                <Text>Bem Vindo {user.displayName} </Text>
+                <Text>Bem Vindo {user.uid}!!{user.displayName} </Text>
 
                 <TouchableOpacity
                     onPress={() => navigation.navigate("NewPrestador")}>
