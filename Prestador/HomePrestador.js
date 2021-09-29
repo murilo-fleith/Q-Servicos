@@ -24,21 +24,32 @@ export default function HomeUsuario({ navigation }) {
         const uid = user.uid;
 
     }
-    
+
 
     var database = firebase.firestore();
 
 
     //databse.collection("prestador").onSnapshot((query))
     useEffect(() => {
-        database.collection("usuario").onSnapshot((query) => {
-            const list = [];
-            query.forEach((doc) => {
-                list.push({ ...doc.data(), id: doc.id });
-            });
-            setListFire(list);
-        });
-    }, []);
+        try {
+            firebase.database().ref('/Agenda' + user.uid).on('value', (snapshot) => {
+                const list = [];
+                snapshot.forEach((childItem) => {
+                    list.push({
+                        key: childItem.key,
+                        dia: childItem.val().dia,
+                        nomeCliente: childItem.val().nomeCliente,
+                        endereco: childItem.val().endereco,
+                        descricao: childItem.val().descricao,
+                    });
+                });
+                setListFire(list);
+            })
+
+        } catch (error) {
+            alert(error);
+        }
+    }, [])
 
 
 
@@ -66,12 +77,12 @@ export default function HomeUsuario({ navigation }) {
                     />
                 </TouchableOpacity>
 
-                <Text>Bem Vindo {user.uid}!!{user.displayName} </Text>
+                <Text>Bem Vindo !!{user.displayName} </Text>
 
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("NewPrestador")}>
+                    onPress={() => navigation.navigate("Agenda")}>
                     <MaterialCommunityIcons
-                        name="filter-menu"
+                        name="calendar-plus"
                         size={20}
                         color="#00000"
 
@@ -82,31 +93,27 @@ export default function HomeUsuario({ navigation }) {
                 <View style={styles.box}>
                     <TouchableOpacity onPress={() => navigation.navigate('Usuario')}> ??{user.displayName}</TouchableOpacity>
                 </View>
+                
+                    <FlatList
+                        //style={styles.viewFlat} 
+                        data={listFire}
+                        keyExtractor={(item) => item.key}
+                        renderItem={({ item }) =>
+                        
+                            <View style={styles.box}>
+                                <View style={styles.box2}>
+                                    <Text>Nome Ciletne: {item.nomeCliente} </Text>
+                                    <Text>Dia: {item.dia} </Text>
+                                    <Text>Descrição :{item.descricao} </Text>
+                                </View>
+                                <View style={styles.box2}>
+                                    <Text>Endereço:{item.endereco}</Text>
 
-                <FlatList
-                    data={listFire}
-                    keyExtractor={(item) => item.key}
-                    renderItem={({ item }) =>
-
-                        <View style={styles.box}>
-                            <View style={styles.box2}>
-                                <Text >Nome: {item.name} </Text>
-                                <Text> Telefone: {item.telefone} </Text>
-                                <Text > email: {item.email} </Text>
+                                </View>
                             </View>
-                            <View style={styles.box2}>
-                                <Text>Cidade:{item.city}</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate('Chat')}> CHAT</TouchableOpacity>
-                            </View>
-
-                        </View>
-
-
-                        //flexDirection: 'row',
-
-                    }
-                />
-
+                        }
+                    />
+                
 
             </ScrollView>
         </SafeAreaView >

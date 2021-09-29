@@ -42,8 +42,55 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         flexDirection: 'column',
         
+    },
+    input: {
+        width: 300,
+        marginTop: 10,
+        padding: 10,
+        height: 50,
+        borderBottomWidth: 1,
+        borderBottomColor: '#F24F00',
+        marginLeft: "auto",
+        marginRight: "auto",
+        color: "#4d5156"
+    },
+    ///////////////////A G E N D A /////////////////////////
+    btdAdd:{
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20,
+        
+        
+    },
+    btnCancel:{
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20
+        
+    },
+    direction:{
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignContent: 'center',
+        alignItems: 'center',
+        paddingTop: 20
+    },
+    inputAgenda:{
+        width: 500,
+        marginTop: 10,
+        padding: 10,
+        height: 50,
+        borderBottomWidth: 1,
+        borderBottomColor: '#F24F00',
+        marginLeft: "auto",
+        marginRight: "auto",
+        color: "#4d5156"
     }
-
 
 })
 export default styles
+
+
+

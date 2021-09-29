@@ -77,8 +77,8 @@ export default function HomeUsuario({ navigation }) {
             <ScrollView>
 
                 <View style={styles.box}>
-                    <Text> ! {user.uid}</Text>
-                    <Text> ! {user.email} </Text>
+                    <Text>{user.email}</Text>
+                    <Text> {user.uid}</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('Prestador')}>Ver tela visa pelos Prestadores </TouchableOpacity>
                 </View>
 
