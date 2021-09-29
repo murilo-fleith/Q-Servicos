@@ -30,7 +30,7 @@ export default function Login({ navigation }) {
             if (user) {
                 //var uid = user.uid;
                 navigation.navigate("Usuario")
-
+                
             } else {
                 console.log("nao logado")
             }
