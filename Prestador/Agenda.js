@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, Alert } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, Alert, SafeAreaView } from 'react-native'
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
@@ -45,12 +45,12 @@ export default function Agenda({ navigation }) {
     }
 
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-            <Text style={styles.title}> Agenda   </Text>
-            <Text> ooo {user.uid}</Text>
+        <SafeAreaView style={styles.agenda}>
+            <Text style={styles.titleAgenda}> Agenda   </Text>
             <TextInput
                 style={styles.inputAgenda}
                 placeholder="Insira o dia do serviço"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setDia(text)}
                 value={dia}
@@ -58,6 +58,7 @@ export default function Agenda({ navigation }) {
             <TextInput
                 style={styles.inputAgenda}
                 placeholder="Nome do Cliente "
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setNomeCliente(text)}
                 value={nomeCliente}
@@ -65,6 +66,7 @@ export default function Agenda({ navigation }) {
             <TextInput
                 style={styles.inputAgenda}
                 placeholder="Descração do serviço"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setDescricao(text)}
                 value={descricao}
@@ -72,6 +74,7 @@ export default function Agenda({ navigation }) {
             <TextInput
                 style={styles.inputAgenda}
                 placeholder="Endereço do Serviço"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setEndereco(text)}
                 value={endereco}
@@ -101,7 +104,7 @@ export default function Agenda({ navigation }) {
             </View>
 
 
-        </KeyboardAvoidingView >
+        </SafeAreaView >
     )
 }
 //onPress={() => this.props.navigation.navigate('CadastroPrestador')

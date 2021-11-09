@@ -3,9 +3,12 @@ import {Platform, StyleSheet} from "react-native"
 
 //"#F24F00"
 const styles = StyleSheet.create({
+    container:{
+        backgroundColor:'#d3d3d3',
+    },
     header:{
         height: 50,
-        backgroundColor: '#F24F00',
+        backgroundColor:'#F24F00',
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'space-between',
@@ -21,7 +24,7 @@ const styles = StyleSheet.create({
     },
     box:{
         height : 150,
-        backgroundColor: "#DDD",
+        backgroundColor: "#808080",
         margin: 7,
         borderRadius: 10,
         alignItems: 'center',
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
     },
     box2:{
         //height : 150,
-        backgroundColor: "#DDD",
+        backgroundColor: "#808080",
         margin: 7,
         borderRadius: 10,
         alignItems: 'center',

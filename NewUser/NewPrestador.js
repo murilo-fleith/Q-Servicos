@@ -4,7 +4,8 @@ import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 
-
+///Switch  ver 
+ 
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState("");
@@ -61,6 +62,7 @@ export default function Login({ navigation }) {
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu Nome"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setName(text)}
                 value={name}
@@ -68,13 +70,15 @@ export default function Login({ navigation }) {
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu Telefone"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setTelefone(text)}
                 value={telefone}
             />
             <TextInput
                 style={styles.input}
-                placeholder="Digite seu email"
+                placeholder="Digite seu Email"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
@@ -83,7 +87,8 @@ export default function Login({ navigation }) {
             <TextInput
                 style={styles.input}
                 secureTextEntry={true} //carecterer de senha 
-                placeholder="Digite sua senha"
+                placeholder="Digite sua Senha"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setPassword(text)}
                 value={password}
@@ -92,13 +97,15 @@ export default function Login({ navigation }) {
             <TextInput
                 style={styles.input}
                 placeholder="Digite a Cidade"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setCity(text)}
                 value={city}
             />
             <TextInput
                 style={styles.inputPreco}
-                placeholder="Digite o preço"
+                placeholder="Digite o Preço"
+                placeholderTextColor="#000000"
                 type="text"
                 onChangeText={(text) => setPreco(text)}
                 value={preco}

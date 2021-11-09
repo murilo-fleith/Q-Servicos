@@ -3,7 +3,7 @@ import { Platform, StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#d3d3d3",
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: Platform.OS === "ios" ? 0 : 50,
@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         borderBottomColor: '#F24F00',
         marginLeft: "auto",
         marginRight: "auto",
-        color: "#4d5156"
+        color: "#4d5156",
+        
     },
     inputPreco: {
         width: 300,
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         alignContent: 'center',
+       // backgroundColor: "#F24F00"        
 
     },
     checkboxContainer: {

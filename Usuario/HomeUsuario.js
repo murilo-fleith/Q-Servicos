@@ -65,7 +65,8 @@ export default function HomeUsuario({ navigation }) {
                 <Text>Bem Vindo! {user.displayName} !</Text>
                 <Text>Oque Esta Precisando Hoje ?</Text>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("NewPrestador")}>
+                    //onPress={() => navigation.navigate("NewPrestador")}
+                    >
                     <MaterialCommunityIcons
                         name="filter-menu"
                         size={20}
@@ -76,12 +77,6 @@ export default function HomeUsuario({ navigation }) {
             </View>
             <ScrollView>
 
-                <View style={styles.box}>
-                    <Text>{user.email}</Text>
-                    <Text> {user.uid}</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Prestador')}>Ver tela visa pelos Prestadores </TouchableOpacity>
-                </View>
-
                 <FlatList
                     data={listFire}
                     keyExtractor={(item) => item.key}
@@ -91,7 +86,8 @@ export default function HomeUsuario({ navigation }) {
                             <View style={styles.box2}>
                                 <Text>Nome: {item.name} </Text>
                                 <Text>Telefone: {item.telefone} </Text>
-                                <Text>Capacidades:{item.eletrecista} {item.pedreiro} {item.encanador} {item.manutencaoGeral}</Text>
+                                <Text>Capacidades:{item.eletrecista} {item.pedreiro}</Text>
+                                <Text> {item.encanador} {item.manutencaoGeral} </Text>
                             </View>
                             <View style={styles.box2}>
                                 <Text>Cidade:{item.city}</Text>

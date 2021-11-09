@@ -7,6 +7,7 @@ import {Platform, StyleSheet} from "react-native"
 
 //"#F24F00"
 const styles = StyleSheet.create({
+
     header:{
         height: 50,
         backgroundColor: '#F24F00',
@@ -19,13 +20,14 @@ const styles = StyleSheet.create({
         
     },
     title:{
+        alignSelf: 'center',
         alignItems: 'center',
         justifyContent:"center",
         color:"#ffffff"
     },
     box:{
         height : 150,
-        backgroundColor: "#DDD",
+        backgroundColor: "#808080",
         margin: 7,
         borderRadius: 10,
         alignItems: 'center',
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     },
     box2:{
         //height : 150,
-        backgroundColor: "#DDD",
+        backgroundColor: "#808080",
         margin: 7,
         borderRadius: 10,
         alignItems: 'center',
@@ -87,7 +89,17 @@ const styles = StyleSheet.create({
         marginLeft: "auto",
         marginRight: "auto",
         color: "#4d5156"
-    }
+    },
+    agenda:{
+        backgroundColor:'#d3d3d3'
+        
+    },
+    titleAgenda:{
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent:"center",
+        color:"#000000"
+    },
 
 })
 export default styles

@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons"
 
 
 
-export default function Login({ navigation }) {
+export default function LoginPrestador({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState("");
@@ -40,7 +40,7 @@ export default function Login({ navigation }) {
                 //var uid = user.uid;
                 if (user) {
 
-                    navigation.navigate("Usuario")
+                    navigation.navigate("Prestador")
                 }
 
             } else {
@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-            <Text style={styles.title}> NOME APP  </Text>
+            <Text style={styles.title}> Prestador !</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu email"
@@ -93,7 +93,7 @@ export default function Login({ navigation }) {
                     <Text style={styles.textButtonLogin}>ENTRAR</Text>
                 </TouchableOpacity>
                 :
-                //onpresss funcao abaixo  
+                  
                 <TouchableOpacity
                     style={styles.buttonLogin}
                     onPress={() => { loginFirebase() }}>
@@ -106,7 +106,7 @@ export default function Login({ navigation }) {
             <Text style={styles.registration}>Se você ainda nao é cadastrado!
                 <Text
                     style={styles.linkSubscribe}
-                    onPress={() => navigation.navigate("CadastroUser")}
+                    onPress={() => navigation.navigate("NewPrestador")}
                 >
                     Cadastre-se agora!
                 </Text>
@@ -115,5 +115,5 @@ export default function Login({ navigation }) {
         </KeyboardAvoidingView>
     )
 }
-//onPress={() => this.props.navigation.navigate('CadastroPrestador')
+
 
