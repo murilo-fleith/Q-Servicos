@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react"
-import { View, Text, TextInput, TouchableOpacity, SafeAreaView, ScrollView, Animated, StatusBar, FlatList } from 'react-native'
+import { View, Text, Linking, TextInput, TouchableOpacity, SafeAreaView, ScrollView, Animated, StatusBar, FlatList, URL } from 'react-native'
 import firebase from '../Firebase'
 import styles from "./styles"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
@@ -37,24 +37,46 @@ export default function HomeUsuario({ navigation }) {
         });
     }, []);
 
-
+    const openWhatsApp = () => {
+        let msg = this.state.message;
+        let mobile = this.state.mobileNo;
+        if (mobile) {
+            if (msg) {
+                let url =
+                    "whatsapp://send?text=" +
+                    this.state.message +
+                    "&phone=55" +
+                    this.state.mobileNo;
+                Linking.openURL(url)
+                    .then(data => {
+                        console.log("WhatsApp Opened successfully " + data);
+                    })
+                    .catch(() => {
+                        alert("Make sure WhatsApp installed on your device");
+                    });
+            } else {
+                alert("Please enter message to send");
+            }
+        } else {
+            alert("Please enter mobile no");
+        }
+    };
 
     /////////////////////////////////////////////////////////
     const [scrollY, setScrollY] = useState(new Animated.Value(0));
 
     const signOut = () => {
         firebase.auth().signOut().then(() => {
-            // Sign-out successful.
+
             navigation.navigate("Home")
         }).catch((error) => {
-            // An error happened.
+
         });
     }
     return (
         <SafeAreaView style={styles.container} >
             <View style={styles.header}>
                 <TouchableOpacity
-                    //onPress={() => navigation.navigate("teste")}
                     onPress={signOut}>
                     <MaterialCommunityIcons
                         name="account"
@@ -65,8 +87,7 @@ export default function HomeUsuario({ navigation }) {
                 <Text>Bem Vindo! {user.displayName} !</Text>
                 <Text>Oque Esta Precisando Hoje ?</Text>
                 <TouchableOpacity
-                    //onPress={() => navigation.navigate("NewPrestador")}
-                    >
+                >
                     <MaterialCommunityIcons
                         name="filter-menu"
                         size={20}
@@ -95,7 +116,11 @@ export default function HomeUsuario({ navigation }) {
 
                             </View>
                             <View style={styles.box3}>
-                                <TouchableOpacity onPress={() => navigation.navigate('Chat')}> CHAT</TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                    Linking.openURL(
+                                        'http://api.whatsapp.com/send?text=Olá!⠀Achei⠀seu⠀contato⠀no⠀app!⠀Gostaria⠀de⠀Agendar!&phone=55' + item.telefone
+                                    );
+                                }}> CHAT</TouchableOpacity>
                             </View>
                         </View>
                     }

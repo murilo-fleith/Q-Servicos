@@ -90,10 +90,7 @@ export default function HomeUsuario({ navigation }) {
                 </TouchableOpacity>
             </View>
             <ScrollView>
-                <View style={styles.box}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Usuario')}> ??{user.displayName}</TouchableOpacity>
-                </View>
-                
+               
                     <FlatList
                         //style={styles.viewFlat} 
                         data={listFire}

@@ -150,6 +150,7 @@ export default function Login({ navigation }) {
                     style={styles.checkbox}
                 />
                 <Text style={styles.label}>Pedreiro     </Text>
+                
                 <CheckBox
                     value={manutencaoGeral}
                     onValueChange={setManutencaoGeral}
