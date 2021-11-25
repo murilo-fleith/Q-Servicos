@@ -37,30 +37,7 @@ export default function HomeUsuario({ navigation }) {
         });
     }, []);
 
-    const openWhatsApp = () => {
-        let msg = this.state.message;
-        let mobile = this.state.mobileNo;
-        if (mobile) {
-            if (msg) {
-                let url =
-                    "whatsapp://send?text=" +
-                    this.state.message +
-                    "&phone=55" +
-                    this.state.mobileNo;
-                Linking.openURL(url)
-                    .then(data => {
-                        console.log("WhatsApp Opened successfully " + data);
-                    })
-                    .catch(() => {
-                        alert("Make sure WhatsApp installed on your device");
-                    });
-            } else {
-                alert("Please enter message to send");
-            }
-        } else {
-            alert("Please enter mobile no");
-        }
-    };
+
 
     /////////////////////////////////////////////////////////
     const [scrollY, setScrollY] = useState(new Animated.Value(0));
@@ -88,12 +65,6 @@ export default function HomeUsuario({ navigation }) {
                 <Text>Oque Esta Precisando Hoje ?</Text>
                 <TouchableOpacity
                 >
-                    <MaterialCommunityIcons
-                        name="filter-menu"
-                        size={20}
-                        color="#00000"
-
-                    />
                 </TouchableOpacity>
             </View>
             <ScrollView>
@@ -116,11 +87,16 @@ export default function HomeUsuario({ navigation }) {
 
                             </View>
                             <View style={styles.box3}>
-                            <TouchableOpacity onPress={() => {
+                                <TouchableOpacity onPress={() => {
                                     Linking.openURL(
                                         'http://api.whatsapp.com/send?text=Olá!⠀Achei⠀seu⠀contato⠀no⠀app!⠀Gostaria⠀de⠀Agendar!&phone=55' + item.telefone
                                     );
-                                }}> CHAT</TouchableOpacity>
+                                }}>
+                                    <MaterialCommunityIcons
+                                        name="whatsapp"
+                                        size={30}
+                                        color="#32CD32"
+                                    /></TouchableOpacity>
                             </View>
                         </View>
                     }
