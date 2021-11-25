@@ -53,7 +53,7 @@ export default function Login({ navigation }) {
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-            <Text style={styles.title}> NOME APP  </Text>
+            <Text style={styles.title} >Q-Serviços</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu email"
@@ -115,5 +115,5 @@ export default function Login({ navigation }) {
         </KeyboardAvoidingView>
     )
 }
-//onPress={() => this.props.navigation.navigate('CadastroPrestador')
+
 

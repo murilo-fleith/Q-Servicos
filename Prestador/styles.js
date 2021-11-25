@@ -7,7 +7,9 @@ import {Platform, StyleSheet} from "react-native"
 
 //"#F24F00"
 const styles = StyleSheet.create({
-
+    container:{
+        backgroundColor:'#d3d3d3',
+    },
     header:{
         height: 50,
         backgroundColor: '#F24F00',

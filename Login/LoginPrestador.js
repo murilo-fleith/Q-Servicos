@@ -53,7 +53,7 @@ export default function LoginPrestador({ navigation }) {
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
-            <Text style={styles.title}> Prestador !</Text>
+            <Text style={styles.title} >Q-Serviços</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Digite seu email"
